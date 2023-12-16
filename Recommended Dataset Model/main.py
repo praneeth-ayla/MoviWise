@@ -69,7 +69,7 @@ def sortedSimilarMoviesFunc(sorted_similar_movies):
 
     for movie in sorted_similar_movies:
         index = movie[0]
-        title_from_index = movies_data[movies_data.index==index]['title'].values[0]
+        title_from_index = movies_data[movies_data.index==index]['id'].values[0]
         if (i<10):
             moviesSimilar.append(title_from_index)
             i+=1
