@@ -1,10 +1,12 @@
 //using router
 const express = require('express')
 const router = express.Router()
+const { spawn } = require('child_process');
 const mongoose = require("mongoose") 
 require("dotenv").config()
 let prsnt = null //the thing
 var flagLogin = false;
+var recoList = null;
 // //database connection
 mongoose.connect(process.env.atlas1+process.env.atlas2+process.env.atlas3+process.env.atlas4)
 var db= mongoose.connection;
@@ -21,7 +23,7 @@ router.get("/",(req,res) =>{
         res.redirect("/user/login")
     }
     else{
-        res.render('user/dashboard') 
+        res.send("Account Page Appears Here") 
     }
    })
 
@@ -51,15 +53,57 @@ router.get("/selectGenre",(req,res)=>{
     res.render("user/genrePage")
 })
 
+
+
+// GENRE GETTING FILE
 router.post("/selectGenre", (req,res)=>{
-    console.log(req.body)
+
     genre= Object.keys(req.body)
-    res.send("Function has stored your selected genre")
+    console.log("your genres: ",genre)
+
+
+    // Sample list to send to Python
+    const inputList = genre;
+    const pythonProcess = spawn('python', ['./Recommended_Dataset_Model/main.py']);
+
+    // Send the input list to Python as a JSON string
+    pythonProcess.stdin.write(JSON.stringify(inputList));
+    pythonProcess.stdin.end();
+
+    // Listen for data from the Python script's stdout
+    pythonProcess.stdout.on('data', (data) => {
+    try {
+    const outputList = JSON.parse(data.toString()); //THE RECOMMENDED LIST
+    recoList= outputList
+    // Output the processed list
+    console.log('Processed List from Python:', outputList);
+    } catch (error) {
+        console.error('Error parsing JSON data from Python:', error.message);
+    }
+    });
+
+    //errors handling Python 
+    pythonProcess.stderr.on('data', (data) => {
+    console.error('Error from Python script:', data.toString());
+    });
+
+    // Listen for the Python script's exit event
+    pythonProcess.on('exit', (code) => {
+    if (code !== 0) {
+        console.error(`Python script exited with code ${code}`);
+    }
+    });
+
     res.redirect("/user/selectWatched")
 } )
 
+
+
+
+
 router.get("/selectWatched", (req,res)=>{
-    res.render("user/selectWatched")
+
+    res.render("user/selectWatched",{listDeMovie:recoList})
 })
 
 router.post("/selectWatched", (req,res)=>{
@@ -80,7 +124,7 @@ router.post("/signup",(req,res)=>{
         flagChangeSign = await insertUser(req.body.name,req.body.password,req.body.email)    
         if (flagChangeSign==true){prsnt=null;
             module.exports.userInfo = {pres:null,user:null};
-            return res.redirect("/user/selection")
+            return res.redirect("/user/selectGenre")
         }else{console.log("Email-id already in use, Try Signing In")}
     }
 }
