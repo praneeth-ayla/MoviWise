@@ -13,7 +13,7 @@ router.get("/", (req,res) =>{
     })
 
 router.get("/surprise",(req,res)=>{
-  res.sendFile(path.join(dir,"../public/home/home.html"))
+  res.sendFile(path.join(dir,"../public/surprise/moviePage.html"))
 })
 
 router.get("/lists",(req,res)=>{
