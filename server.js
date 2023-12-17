@@ -10,6 +10,9 @@ app.use(express.json()) //allows us to touch json from body
 
 //routers
 
+const home = require("./routes/home")
+app.use('/home', home)
+
 const user = require("./routes/user")
 app.use('/user', user)
 
