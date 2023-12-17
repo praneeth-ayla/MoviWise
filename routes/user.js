@@ -23,7 +23,7 @@ router.get("/",(req,res) =>{
         res.redirect("/user/login")
     }
     else{
-        res.send("Account Page Appears Here") 
+        res.redirect("/home") 
     }
    })
 
@@ -31,7 +31,7 @@ router.get("/login",(req,res) =>{
     if (prsnt==null){
         res.render("user/login")
     }else{
-    res.redirect('/user')    
+    res.redirect('/home')    
     }
     
 })

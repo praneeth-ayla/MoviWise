@@ -12,19 +12,18 @@
                 <div class="col logo col-lg-3 col-md-2 col-sm-3">MoviWise</div>
     
                 <div class="col menu col-lg-6 col-md-7 col-sm-6">
-                    <a class="col" href="#">Home</a> <a class="col" href="#">Features</a>
-                    <a class="col" href="#">Surprise</a> <a class="col" href="#">About</a>
-                    <a class="col" href="#">Review</a>
+                    <a class="col" href="#">Home</a> <a class="col" href="/home/explore">Explore</a>
+                    <a class="col" href="/home/surprise">Surprise</a> <a class="col" href="/home/lists">My Lists</a>
                 </div>
     
-                <div class="col register col-lg-2 col-md-2 col-sm-3 justify-content-end offset-1" ><a href="javascript:introJs().setOption('showProgress',true).start();">Login</a></div>
+                <div class="col register col-lg-2 col-md-2 col-sm-3 justify-content-end offset-1" ><a href="javascript:introJs().setOption('showProgress',true).start();">User</a></div>
             </nav>
             <hr>
         </header>
         <header class="main">
             
                 <video autoplay muted loop>
-                    <source class="video1" src="" alt="Movie Poster" type="video/mp4">
+                    <source class="video1" src="background.mp4" type="video/mp4">
                 </video>
             
         </header>
@@ -45,6 +44,35 @@
                 this is how the description is going to be for a particular
                 movie.
             </p>
+            <hr>
+        </div>
+        
+        <div class="comment">
+            <h1>Comments:</h1>
+            <img src="/moviePage/mask.jpg" style="width: 70px; height:70px; border:3px solid black; border-radius:50px;">
+            <h3>Scapser#911:</h3>
+            <textarea type="text" style="height: 10rem; width:50rem;" placeholder="Comment here:"></textarea>
+
+            <div class="comment1">
+                <img src="/moviePage/boy-01.png" style="width: 70px; height:70px; border:3px solid black; border-radius:50px;">
+                <h3>Cristianoo#07:</h3>
+                <p style="border:2px solid black; border-radius: 20px; padding:10px; width:50rem;">Was a great movie......might watch it again
+                Best part was when the hero saves her falling from the building....
+            loved the scene sooooo much ......i'll tell everyone to watch this movie<br>
+        Best part at <a href="#">1:23:07</a></p>
+            </div>
+            <div class="comment2">
+                <img src="/moviePage/yoruuu.jpg" style="width: 70px; height:70px; border:3px solid black; border-radius:50px;">
+                <h3>Mr.Black#004:</h3>
+                <p style="border:2px solid black; border-radius: 20px; padding:10px; width:50rem;">Good movie but the ending could be better!!!
+                theres a reason for the villian to rule the world...if hero just have heard the words for him he could protect the villian from becoming one.
+            the hero doesnt cared about the villian and casually kills him without listening the story from his side!</p>
+            </div>
+            <div class="comment2">
+                <img src="/moviePage/sm.jpg" style="width: 70px; height:70px; border:3px solid black; border-radius:50px;">
+                <h3>Spideyy#02:</h3>
+                <p style="border:2px solid black; border-radius: 20px; padding:10px; width:50rem;">Nah....not good<br>Everyone knows that hero should'nt have done that in the end at <a href="#">2:56:07 </a>  </p>
+            </div>
         </div>
     </body>
     <script>
@@ -64,6 +92,7 @@
           if (watchColor=="indianred"){
           document.getElementById("watch1").style.background = "red";
           document.getElementById("watch1").style.border = "red";
+          alert('Added to Watch list!')
         }
         else{document.getElementById("watch1").style.background = "indianred";
           document.getElementById("watch1").style.border = "indianred";}

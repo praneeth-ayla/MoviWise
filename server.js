@@ -2,7 +2,7 @@ const express = require('express');
 const { spawn } = require('child_process');
 require("dotenv").config()
 const app = express();
-
+app.use(express.static("public"))
 app.set('view engine','ejs') //anpother engine: pug
 app.use(express.urlencoded({extended:true})) //middleware to excess form values
 app.use(express.static("public")) //use: /index.html in URL
