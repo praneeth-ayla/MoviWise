@@ -1,6 +1,6 @@
 apikey = &api_key=2487b9ddee7f94d0e9d3841a653b3871
 baseUrl = https://api.themoviedb.org/3/
 
-
+img = https://api.themoviedb.org/3/movie/{movie_id}/images
 
 url = https://api.themoviedb.org/3/movie/{id}?api_key=2487b9ddee7f94d0e9d3841a653b3871

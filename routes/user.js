@@ -75,6 +75,7 @@ router.post("/selectGenre", (req,res)=>{
     try {
     const outputList = JSON.parse(data.toString()); //THE RECOMMENDED LIST
     recoList= outputList
+    module.exports.recoList = recoList;
     // Output the processed list
     console.log('Processed List from Python:', outputList);
     } catch (error) {
