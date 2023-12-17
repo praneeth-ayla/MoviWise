@@ -139,8 +139,16 @@
         bottom:30vh;
 
     }
+    .comment{
+        display:block;
+        position:relative;
+        left:90vh;
+        bottom:30vh;
 
-    
+    }
+    .comment1{
+        margin-top:30px;
+    }
 
 
     /* MEDIA QUERIES */
